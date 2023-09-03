@@ -1,4 +1,5 @@
 name: 'Terraform'
+
 on:
   push:
     branches: [ "main" ]
@@ -11,13 +12,14 @@ jobs:
     name: 'Terraform'
     runs-on: ubuntu-latest
     env:
-        AWS_ACCESS_KEY-ID: ${{ SECRETS.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ SECRETS.AWS_SECRET_ACCESS_KEY }}
+        AWS_ACCESS_KEY-ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ sectets.AWS_SECRET_ACCESS_KEY }}
 
     defaults:
       run:
         shell: bash
- steps:
+        working-directory: .
+    steps:
     - name: Checkout
       uses: actions/checkout@v2
 
@@ -36,9 +38,9 @@ jobs:
 
     
     - name: Terraform Plan
-      run: terraform plan -no-color
+      run: terraform plan -input=false
 
      
     - name: Terraform Apply
      
-      run: terraform apply -auto-approve
+      run: terraform apply -auto-approve -input=false
