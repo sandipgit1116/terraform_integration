@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
         AWS_ACCESS_KEY-ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ sectets.AWS_SECRET_ACCESS_KEY }}
+        AWS_SECRET_ACCESS_KEY: ${{ SECRETS.AWS_SECRET_ACCESS_KEY }}
 
     defaults:
       run:
